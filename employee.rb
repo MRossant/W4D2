@@ -1,13 +1,19 @@
-class Employee
+require_relative 'employee.rb'
 
+class Employee
+    # attr_reader :name, :title, :salary
     def initialize(name, title, salary, boss = nil)
-        @name = Employee.new(name)
+        @name = name# Employee.new(name)
         @title = title
         @salary = salary
         @boss = boss
-        @bonus = bonus
-        @subordinates = []
+        #@bonus = bonus
+        #@subordinates = []
     end
+
+    #def boss=(boss)
+    #boss = boss
+    #boss.adding employee method (self)
 
     def bonus(multiplier)
         if @subordinates.empty? && @boss != nil
@@ -20,3 +26,4 @@ class Employee
     attr_accessor :boss
 
 end
+
