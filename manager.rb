@@ -7,8 +7,12 @@ class Manager < Employee
         @subordinates = []
     end
 
+    def add_employee(subordinate_node)
+        @subordinates << subordinate_node
+    end
 
-
+    private
+    attr_reader :subordinates
 end
 
 
@@ -19,3 +23,13 @@ d = Employee.new('David', 'TA', 10000)
 p b
 p '---------'
 p c
+
+# c.add_boss(a)
+# # # Ned.subordinates << b
+# # # Darren.boss = a
+# p c
+# p "--------"
+# p a
+
+
+
