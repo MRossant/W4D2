@@ -1,5 +1,6 @@
 class Employee
 
+    attr_reader :name, :title, :salary, :subordinates
     attr_accessor :boss
     
     def initialize(name, title, salary, boss = nil)
@@ -8,7 +9,7 @@ class Employee
         @salary = salary
         @boss = boss
         # @bonus = bonus
-        # # @subordinates = []
+        @subordinates = []
     end
     
     def add_boss(node)
@@ -22,7 +23,6 @@ class Employee
         end
     end
 
-    private
-    attr_reader :name, :title, :salary
+    # private
 
 end
