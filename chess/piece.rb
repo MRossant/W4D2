@@ -1,8 +1,8 @@
 class Piece
-    attr_reader :piece
+    attr_reader :name
 
-    def initialize
-        @piece = piece
+    def initialize(name)
+        @name = name
     end
 end
 
