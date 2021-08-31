@@ -5,6 +5,8 @@ class Board
         @null_piece = NullPiece.new
     end
 
+    
+
     private
     attr_reader :null_piece
 end
