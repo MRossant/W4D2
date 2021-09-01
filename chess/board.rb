@@ -4,6 +4,9 @@ require "byebug"
 
 class Board
 
+    pieces = [:Rook, :Knight, :Bishop, :Queen, :King, :Bishop, :Knight, :Rook]
+    # set pawns on row 1 and 6
+
     attr_reader :grid
 
     def initialize
@@ -29,6 +32,7 @@ class Board
     end
     
     def set_grid
+        
         @grid.each.with_index do |row, r_i|
             row.each_with_index do |col, c_i|
                 if r_i == 0 || r_i == 1 || r_i == @grid.length - 1 || r_i == @grid.length - 2
