@@ -4,32 +4,39 @@ require "byebug"
 
 class Board
 
-    attr_reader :board
+    attr_reader :grid
 
     def initialize
-        @board = Array.new(8) { Array.new(8) }
-        set_board
+        @grid = Array.new(8) { Array.new(8) }
+        set_grid
     end
     
     def [](pos)
         x, y = pos
-        @board[x][y]
+        @grid[x][y]
     end
     
     def []=(pos, value)
         x, y = pos
-        @board[x][y] = value
+        @grid[x][y] = value
+    end
+
+    def move_piece(start_pos, end_pos)
+        raise "NoPieceError" if self[start_pos].is_a?(NullPiece)
+        raise "EncounteredPieceError" if self[end_pos].is_a?(Piece)
+
+        self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
     end
     
-    def set_board
-        @board.each.with_index do |row, r_i|
+    def set_grid
+        @grid.each.with_index do |row, r_i|
             row.each_with_index do |col, c_i|
-                if r_i == 0 || r_i == 1 || r_i == @board.length - 1 || r_i == @board.length - 2
-                    debugger
-                    @board[r_i][c_i] = Piece.new("piece") 
+                if r_i == 0 || r_i == 1 || r_i == @grid.length - 1 || r_i == @grid.length - 2
+                    # debugger
+                    @grid[r_i][c_i] = Piece.new("piece") 
                 else
-                    debugger
-                    @board[r_i][c_i] = NullPiece.new("Nil")
+                    # debugger
+                    @grid[r_i][c_i] = NullPiece.new("Nil")
                 end
             end
         end
