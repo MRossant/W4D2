@@ -11,6 +11,7 @@ class Board
     def initialize
         # @grid = Array.new(8) { Array.new(8, NullPiece.instance) }
         set_grid
+        # @nil_piece = NullPiece.instance
     end
     
     def [](pos)
@@ -25,9 +26,12 @@ class Board
     
     def move_piece(start_pos, end_pos)
         raise "NoPieceError" if self[start_pos].is_a?(NullPiece)
-        raise "EncounteredPieceError" if self[end_pos].is_a?(Piece)
+        raise "EncounteredPieceError" if self[end_pos].color == self[start_pos].color
         
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
+        self[start_pos].pos, self[end_pos].pos = self[end_pos].pos, self[start_pos].pos
+        # self[start_pos].pos = self[end_pos].pos
+        # self[end_pos].pos = self[start_pos].pos
     end
     
     def set_grid
