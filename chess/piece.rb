@@ -1,8 +1,13 @@
 class Piece
-    attr_reader :name
+    attr_reader :color, :board
+    attr_accessor :pos
 
-    def initialize(name)
-        @name = name
+    def initialize(color, board, pos)
+        @color, @board, @pos = color, board, pos
+    end
+
+    def moves
+        possible_moves = []
     end
 end
 
